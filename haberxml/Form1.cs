@@ -26,6 +26,11 @@ namespace haberxml
         private void btnXmlOku_Click(object sender, EventArgs e)
         {
 
+            DataSet dset = new DataSet();
+            XmlReader okuyucu = XmlReader.Create("https://www.cumhuriyet.com.tr/rss/son_dakika.xml",new XmlReaderSettings());
+            dset.ReadXml(okuyucu);
+
+            dgvSnc.DataSource = dset.Tables[3];
         }
 
         private void btnXmlYaz_Click(object sender, EventArgs e)

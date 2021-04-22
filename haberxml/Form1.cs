@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace haberxml
 {
@@ -18,6 +19,16 @@ namespace haberxml
         }
 
         private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnXmlOku_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnXmlYaz_Click(object sender, EventArgs e)
         {
 
         }

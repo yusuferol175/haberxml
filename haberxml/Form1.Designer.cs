@@ -29,9 +29,11 @@ namespace haberxml
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnXmlOku = new System.Windows.Forms.Button();
             this.btnXmlYaz = new System.Windows.Forms.Button();
             this.dgvSnc = new System.Windows.Forms.DataGridView();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSnc)).BeginInit();
             this.SuspendLayout();
             // 
@@ -84,6 +86,7 @@ namespace haberxml
         private System.Windows.Forms.Button btnXmlOku;
         private System.Windows.Forms.Button btnXmlYaz;
         private System.Windows.Forms.DataGridView dgvSnc;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 

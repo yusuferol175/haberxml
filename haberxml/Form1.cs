@@ -33,7 +33,9 @@ namespace haberxml
 
             dgvSnc.DataSource = dset.Tables[3];
 
-
+            btnXmlYaz.Enabled = true; //btnxmlokuya basmadığımızda veri çekmediği için direk yaza basıldığında boş dosya kaydediyordu.
+                                      //bende veriler gelmeden yazma işlemini kapatmak için btnxmlyazmayı btnxmlokuya basıldıktan sonra
+                                      //çalışması için burda bunu yaptım.
         }
 
         private void btnXmlYaz_Click(object sender, EventArgs e)

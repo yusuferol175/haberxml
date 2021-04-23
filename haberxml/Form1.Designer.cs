@@ -49,6 +49,7 @@ namespace haberxml
             // 
             // btnXmlYaz
             // 
+            this.btnXmlYaz.Enabled = false;
             this.btnXmlYaz.Location = new System.Drawing.Point(413, 352);
             this.btnXmlYaz.Name = "btnXmlYaz";
             this.btnXmlYaz.Size = new System.Drawing.Size(134, 52);

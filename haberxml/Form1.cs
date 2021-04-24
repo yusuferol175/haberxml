@@ -18,7 +18,7 @@ namespace haberxml
         {
             InitializeComponent();
         }
-
+        public int i = 0;
         private void Form1_Load(object sender, EventArgs e)
         {
 
@@ -95,33 +95,43 @@ namespace haberxml
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-
+       
             if (btnXmlYaz.Enabled==true)
             {
-                xmloku();
-
-                xmlyaz();
-
-
-                XmlDocument xdoc = new XmlDocument();
-                xdoc.Load(@"haberyeni.xml");
-                XmlNodeList list = xdoc.SelectNodes("//haberler/item");
-                foreach (XmlNode x in list)
+                if (i==180)
                 {
+                    xmloku();
 
-                    string baslık = x["baslık"].InnerText;
-                    string baslık1 = Convert.ToString(dgvSnc.Rows[0].Cells[0].Value);
-                    if (baslık != baslık1)
+                    xmlyaz();
+
+
+                    XmlDocument xdoc = new XmlDocument();
+                    xdoc.Load(@"haberyeni.xml");
+                    XmlNodeList list = xdoc.SelectNodes("//haberler/item");
+                    foreach (XmlNode x in list)
                     {
-                        tmr.Stop();
-                        MessageBox.Show("Yeni Sondakika Haberleri Geldi ve Güncellendi");
-                        XmlDocument cpy = new XmlDocument();
-                        cpy.Load(@"haber.xml");
-                        cpy.Save(@"haberyeni.xml");
-                        tmr.Start();
+
+                        string baslık = x["baslık"].InnerText;
+                        string baslık1 = Convert.ToString(dgvSnc.Rows[0].Cells[0].Value);
+                        if (baslık != baslık1)
+                        {
+                            tmr.Stop();
+                            MessageBox.Show("Yeni Sondakika Haberleri Geldi ve Güncellendi");
+                            XmlDocument cpy = new XmlDocument();
+                            cpy.Load(@"haber.xml");
+                            cpy.Save(@"haberyeni.xml");
+                            tmr.Start();
+                        }
+
+                        break;
+
                     }
 
-                    break;
+                    i = 1;
+                }
+                else
+                {
+                    i++;
                 }
 
 

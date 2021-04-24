@@ -33,13 +33,13 @@ namespace haberxml
             this.btnXmlOku = new System.Windows.Forms.Button();
             this.btnXmlYaz = new System.Windows.Forms.Button();
             this.dgvSnc = new System.Windows.Forms.DataGridView();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.tmr = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSnc)).BeginInit();
             this.SuspendLayout();
             // 
             // btnXmlOku
             // 
-            this.btnXmlOku.Location = new System.Drawing.Point(196, 352);
+            this.btnXmlOku.Location = new System.Drawing.Point(542, 212);
             this.btnXmlOku.Name = "btnXmlOku";
             this.btnXmlOku.Size = new System.Drawing.Size(132, 52);
             this.btnXmlOku.TabIndex = 0;
@@ -50,7 +50,7 @@ namespace haberxml
             // btnXmlYaz
             // 
             this.btnXmlYaz.Enabled = false;
-            this.btnXmlYaz.Location = new System.Drawing.Point(413, 352);
+            this.btnXmlYaz.Location = new System.Drawing.Point(540, 307);
             this.btnXmlYaz.Name = "btnXmlYaz";
             this.btnXmlYaz.Size = new System.Drawing.Size(134, 52);
             this.btnXmlYaz.TabIndex = 1;
@@ -63,14 +63,20 @@ namespace haberxml
             this.dgvSnc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSnc.Location = new System.Drawing.Point(0, 0);
             this.dgvSnc.Name = "dgvSnc";
-            this.dgvSnc.Size = new System.Drawing.Size(800, 322);
+            this.dgvSnc.Size = new System.Drawing.Size(443, 566);
             this.dgvSnc.TabIndex = 2;
+            // 
+            // tmr
+            // 
+            this.tmr.Enabled = true;
+            this.tmr.Interval = 1000;
+            this.tmr.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(928, 393);
             this.Controls.Add(this.dgvSnc);
             this.Controls.Add(this.btnXmlYaz);
             this.Controls.Add(this.btnXmlOku);
@@ -87,7 +93,7 @@ namespace haberxml
         private System.Windows.Forms.Button btnXmlOku;
         private System.Windows.Forms.Button btnXmlYaz;
         private System.Windows.Forms.DataGridView dgvSnc;
-        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer tmr;
     }
 }
 

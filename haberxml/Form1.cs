@@ -26,23 +26,34 @@ namespace haberxml
 
         private void btnXmlOku_Click(object sender, EventArgs e)
         {
-
-            DataSet dset = new DataSet();
-            XmlReader okuyucu = XmlReader.Create("https://www.cumhuriyet.com.tr/rss/son_dakika.xml", new XmlReaderSettings());
-            dset.ReadXml(okuyucu);
-
-            dgvSnc.DataSource = dset.Tables[3];
+            xmloku();
 
             btnXmlYaz.Enabled = true; //btnxmlokuya basmadığımızda veri çekmediği için direk yaza basıldığında boş dosya kaydediyordu.
                                       //bende veriler gelmeden yazma işlemini kapatmak için btnxmlyazmayı btnxmlokuya basıldıktan sonra
                                       //çalışması için burda bunu yaptım.
         }
 
+        private void xmloku()
+        {
+            DataSet dset = new DataSet();
+            XmlReader okuyucu = XmlReader.Create("https://www.cumhuriyet.com.tr/rss/son_dakika.xml", new XmlReaderSettings());
+            dset.ReadXml(okuyucu);
+
+            dgvSnc.DataSource = dset.Tables[3];
+        }
+
         private void btnXmlYaz_Click(object sender, EventArgs e)
         {
+            xmlyaz();
 
-            
+            XmlDocument cpy = new XmlDocument();
+            cpy.Load(@"haber.xml");
+            cpy.Save(@"haberyeni.xml");
 
+        }
+
+        private void xmlyaz()
+        {
             XmlDocument xdos = new XmlDocument();
             XmlNode root = xdos.CreateElement("haberler");
             xdos.AppendChild(root);
@@ -51,6 +62,7 @@ namespace haberxml
 
             for (int i = 0; i < dgvSnc.Rows.Count - 1; i++)
             {
+
                 XmlNode item = xdos.CreateElement("item");
                 XmlAttribute id = xdos.CreateAttribute("id");
                 XmlNode baslık = xdos.CreateElement("baslık");
@@ -72,27 +84,52 @@ namespace haberxml
                 item.AppendChild(acıklama);
                 root.AppendChild(item);
 
-               
+
 
             }
             FileStream sf = File.Create(@"haber.xml");
             sf.Close();
             string haberdosyası = @"haber.xml";
             xdos.Save(haberdosyası);
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+
+            if (btnXmlYaz.Enabled==true)
+            {
+                xmloku();
+
+                xmlyaz();
 
 
+                XmlDocument xdoc = new XmlDocument();
+                xdoc.Load(@"haberyeni.xml");
+                XmlNodeList list = xdoc.SelectNodes("//haberler/item");
+                foreach (XmlNode x in list)
+                {
+
+                    string baslık = x["baslık"].InnerText;
+                    string baslık1 = Convert.ToString(dgvSnc.Rows[0].Cells[0].Value);
+                    if (baslık != baslık1)
+                    {
+                        tmr.Stop();
+                        MessageBox.Show("Yeni Sondakika Haberleri Geldi ve Güncellendi");
+                        XmlDocument cpy = new XmlDocument();
+                        cpy.Load(@"haber.xml");
+                        cpy.Save(@"haberyeni.xml");
+                        tmr.Start();
+                    }
+
+                    break;
+                }
 
 
-
-
-
+            }
            
 
-
-
         }
-
-        }
+    }
     }
 
 

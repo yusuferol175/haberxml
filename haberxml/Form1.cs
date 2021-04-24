@@ -85,7 +85,6 @@ namespace haberxml
                 root.AppendChild(item);
 
 
-
             }
             FileStream sf = File.Create(@"haber.xml");
             sf.Close();

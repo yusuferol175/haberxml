@@ -28,7 +28,7 @@ namespace haberxml
         {
             xmloku();
 
-            btnXmlYaz.Enabled = true; //btnxmlokuya basmadığımızda veri çekmediği için direk yaza basıldığında boş dosya kaydediyordu.
+            btnXmlYaz.Enabled = true; //btnxmlokuya basmadığımızda veri çekmediği için direkt yaza basıldığında boş dosya kaydediyordu.
                                       //bende veriler gelmeden yazma işlemini kapatmak için btnxmlyazmayı btnxmlokuya basıldıktan sonra
                                       //çalışması için burda bunu yaptım.
         }
